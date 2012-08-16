@@ -2,16 +2,42 @@
 import QtQuick 1.1
 
 Rectangle {
-    width: 360
-    height: 360
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
+    width: 1024
+    height: 720
+
+    Rectangle {
+        id: menu
+        x: 0
+        y: 0
+        width: 1024
+        height: 52
+        color: "#c2bfbf"
     }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
+
+    Rectangle {
+        id: leftPanelObjects
+        x: 0
+        y: 52
+        width: 122
+        height: 668
+        color: "#4d4c4c"
+    }
+
+    Rectangle {
+        id: rightPanelObjects
+        x: 902
+        y: 52
+        width: 122
+        height: 668
+        color: "#4d4c4c"
+    }
+
+    Rectangle {
+        id: centerPanel
+        x: 122
+        y: 52
+        width: 780
+        height: 668
+        color: "#959393"
     }
 }
