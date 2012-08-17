@@ -30,8 +30,23 @@ symbian:TARGET.CAPABILITY += NetworkServices
 # CONFIG += qt-components
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    happlication.cpp \
+    hstate.cpp \
+    htransition.cpp \
+    hinvokation.cpp \
+    hdebug.cpp \
+    hfilemanager.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
+
+HEADERS += \
+    happlication.h \
+    hstate.h \
+    htransition.h \
+    hinvokation.h \
+    hdebug.h \
+    hfilemanager.h \
+    htypes.h

@@ -37,6 +37,8 @@ Rectangle {
                 y: 0
                 width: 99
                 height: 27
+
+                onClicked: { hApplication.createFile("test.txt") }
             }
         }
 
@@ -103,54 +105,62 @@ Rectangle {
         height: 668
         color: "#4d4c4c"
 
-        Image {
-            id: initalState
-            x: 26
-            y: 21
-            width: 59
-            height: 51
-            source: "Resources/initialState.png"
+        Flickable {
+            id: leftPanelDrag
+            x: 0
+            y: 0
+            width: 122
+            height: 668
 
-            MouseArea {
-                id: mouse_areaInitalState
-                x: 0
-                y: 0
+            Image {
+                id: initalState
+                x: 26
+                y: 21
                 width: 59
                 height: 51
+                source: "Resources/initialState.png"
+
+                MouseArea {
+                    id: mouse_areaInitalState
+                    x: 0
+                    y: 0
+                    width: 59
+                    height: 51
+                }
             }
-        }
 
-        Image {
-            id: finalState
-            x: 23
-            y: 96
-            width: 66
-            height: 57
-            source: "Resources/finalState.png"
-
-            MouseArea {
-                id: mouse_areaFinalState
-                x: 0
-                y: 0
+            Image {
+                id: finalState
+                x: 23
+                y: 96
                 width: 66
                 height: 57
+                source: "Resources/finalState.png"
+
+                MouseArea {
+                    id: mouse_areaFinalState
+                    x: 0
+                    y: 0
+                    width: 66
+                    height: 57
+                }
             }
-        }
 
-        Image {
-            id: state
-            x: 23
-            y: 181
-            width: 66
-            height: 57
-            source: "Resources/state.png"
-
-            MouseArea {
-                id: mouse_areaState
-                x: 0
-                y: 0
+            Image {
+                id: state
+                x: 23
+                y: 181
                 width: 66
                 height: 57
+                source: "Resources/state.png"
+
+                MouseArea {
+                    id: mouse_areaState
+                    x: 0
+                    y: 0
+                    width: 66
+                    height: 57
+                }
             }
         }
     }
