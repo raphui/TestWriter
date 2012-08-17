@@ -39,6 +39,8 @@ void HTraces_print( const char *file , const int line , const char *function , u
 
         QString toBePrint;
 
+        toBePrint += time;
+
         if( level == TRACE_LEVEL_WARN )
         {
             toBePrint += "[WARN]";

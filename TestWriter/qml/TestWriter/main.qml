@@ -38,7 +38,7 @@ Rectangle {
                 width: 99
                 height: 27
 
-                onClicked: { hApplication.createFile("test.txt") }
+                onClicked: { hApplication.createFile("C:\\test.txt") }
             }
         }
 
@@ -93,6 +93,7 @@ Rectangle {
                 y: 0
                 width: 99
                 height: 27
+                onClicked: { Qt.quit() }
             }
         }
     }

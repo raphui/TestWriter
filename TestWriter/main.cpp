@@ -1,4 +1,7 @@
 #include <QtGui/QApplication>
+#include <QDeclarativeContext>
+#include <QDeclarativeView>
+
 #include "qmlapplicationviewer.h"
 
 #include "happlication.h"
@@ -9,17 +12,20 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QmlApplicationViewer viewer;
 
-    //QDeclarativeView view;
+    HApplication *hApp = new HApplication();
 
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    viewer.setMainQmlFile(QLatin1String("qml/TestWriter/main.qml"));
-    viewer.showExpanded();
+    hApp->init();
 
-    HApplication hApp;
+    QDeclarativeView view;
+    view.rootContext()->setContextProperty("hApplication" , hApp);
+    view.setSource( QUrl("qml/TestWriter/main.qml") );
+    view.show();
 
-    hApp.init();
 
-    //view.rootContext()->setContextProperty("hApplication" , &hApp);
+    //viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+    //viewer.setMainQmlFile(QLatin1String("qml/TestWriter/main.qml"));
+    //viewer.showExpanded();
+
 
     return app->exec();
 }

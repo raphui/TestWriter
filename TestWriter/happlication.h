@@ -7,7 +7,7 @@
 
 #include <QObject>
 
-class HApplication : QObject
+class HApplication : public QObject
 {
     Q_OBJECT
 
