@@ -20,7 +20,7 @@ void HTransition::setEvent(QString event)
 
 void HTransition::setCond(QString cond)
 {
-    TRACE_2( HTRANSITIONn , "HTransition setCond( %s )." , qPrintable( cond ) );
+    TRACE_2( HTRANSITION , "HTransition setCond( %s )." , qPrintable( cond ) );
 
     this->cond = cond;
 }

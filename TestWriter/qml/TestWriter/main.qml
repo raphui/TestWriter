@@ -33,10 +33,10 @@ Rectangle {
         }
 
        Button {
-           x: 731
-           y: 13
+            x: 731
+            y: 13
 
-           text: "Exit"
+            text: "Exit"
             onClicked: { Qt.quit() }
         }
     }
@@ -51,10 +51,8 @@ Rectangle {
 
         Flickable {
             id: leftPanelDrag
-            x: 0
-            y: 0
-            width: 122
-            height: 668
+
+            anchors.fill: parent
 
             Image {
                 id: initalState
@@ -66,12 +64,44 @@ Rectangle {
 
                 MouseArea {
                     id: mouse_areaInitalState
-                    x: 0
-                    y: 0
-                    width: 59
-                    height: 51
 
-                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/initialState.png" } ) }
+                    anchors.fill: parent
+
+//                    property variant imgObj
+//                    property int startX
+//                    property int startY
+
+//                    onPressed: {
+
+//                        startX = mouseX
+//                        startY = mouseY
+
+//                        var imgComp = Qt.createComponent("initialState.qml");
+//                        imgObj = imgComp.createObject( parent );
+//                        imgObj.x = mouseX - imgObj.width/2
+//                        imgObj.y = mouseY - imgObj.height/2
+//                    }
+
+//                    onPositionChanged: {
+//                        imgObj.x += mouseX - startX
+//                        imgObj.y += mouseY - startY
+//                        startX = mouseX
+//                        startY = mouseY
+//                    }
+
+//                    onReleased: {
+//                        imgObj.destroy()
+//                    }
+
+//                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/initialState.png" } ) }
+//                    onReleased: { if( isAonB( initialState , centerPanel ) )
+//                                  {
+//                                    initalState.x = mouseX
+//                                    initalState.y = mouseY
+//                                  }
+//                    }
+
+
                 }
             }
 
@@ -85,12 +115,10 @@ Rectangle {
 
                 MouseArea {
                     id: mouse_areaFinalState
-                    x: 0
-                    y: 0
-                    width: 66
-                    height: 57
 
-                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/finalState.png" } ) }
+                    anchors.fill: parent
+
+//                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/finalState.png" } ) }
                 }
             }
 
@@ -104,12 +132,10 @@ Rectangle {
 
                 MouseArea {
                     id: mouse_areaState
-                    x: 0
-                    y: 0
-                    width: 66
-                    height: 57
 
-                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/state.png" } ) }
+                    anchors.fill: parent
+
+//                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/state.png" } ) }
                 }
             }
         }
@@ -132,62 +158,66 @@ Rectangle {
         height: 668
         color: "#959393"
 
-        GridView {
-            id: centerGridView
+        //        GridView {
+        //            id: centerGridView
 
-            property int firstIndexDrag: -1
+        //            property int firstIndexDrag: -1
 
-            x: 0
-            y: 0
-            width: 780
-            height: 668
-            cellHeight: 70
-            cellWidth: 70
+        //            cellHeight: 70
+        //            cellWidth: 70
 
-            anchors.fill: parent
+        //            anchors.fill: parent
 
-            delegate:
-                Item {
-                    x: 5
-                    height: 50
-                    Column {
-                        spacing: 5
-                        Rectangle {
-                            width: 66
-                            height: 57
-                            anchors.horizontalCenter: parent.horizontalCenter
+        //            delegate:
+        //                Item {
+        //                    x: 5
+        //                    height: 50
+        //                    Column {
+        //                        spacing: 5
+        //                        Rectangle {
+        //                            width: 66
+        //                            height: 57
+        //                            anchors.horizontalCenter: parent.horizontalCenter
 
 
-                            Image {
+        //                            Image {
 
-                                source: sourceImage
-                                anchors.fill: parent
-                            }
-                        }
+        //                                source: sourceImage
+        //                                anchors.fill: parent
+        //                            }
+        //                        }
 
-                    }
-                }
+        //                    }
+        //                }
 
-            MouseArea {
-                anchors.fill: parent
+        //            MouseArea {
 
-                onReleased: {
-                        if( centerGridView.firstIndexDrag !== -1 )
-                            stateModel.move( centerGridView.firstIndexDrag , centerGridView.indexAt( mouseX , mouseY )
-                                            , 1 )
+        //                id: centerMouseArea
 
-                        centerGridView.firstIndexDrag = -1
-                }
+        //                anchors.fill: parent
 
-                onPressed: centerGridView.firstIndexDrag=centerGridView.indexAt( mouseX , mouseY )
-            }
+        //                onReleased: {
+        //                        if( centerGridView.firstIndexDrag !== -1 )
+        //                            stateModel.move( centerGridView.firstIndexDrag
+        //                                            , centerGridView.indexAt( mouseX , mouseY )
+        //                                            , 1 )
 
-            model: ListModel {
+        //                        centerGridView.firstIndexDrag = -1
+        //                }
 
-                id: stateModel
+        //                onPressed: centerGridView.firstIndexDrag=centerGridView.indexAt( mouseX , mouseY )
 
-                onItemsInserted: { }
-            }
-        }
+        //            }
+
+        //            model: ListModel {
+
+        //                id: stateModel
+
+        ////                onItemsInserted: { hApplication.construcItem( stateModel.get( stateModel.count - 1 ) ) }
+
+        //            }
+        //        }
+
+
     }
 }
