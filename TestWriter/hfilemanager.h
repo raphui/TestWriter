@@ -14,10 +14,11 @@ class HFileManager
         int createFile( QString filename );
         int openFile( QString filename );
         int saveFile( QString filename );
-        int closeFile( QString filename );
+        int closeFile();
 
     private:
         QFile currentFile;
+        QTextStream streamFile;
 };
 
 #endif // HFILEMANAGER_H

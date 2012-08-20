@@ -4,6 +4,9 @@ import QtQuick 1.1
 Rectangle {
     width: 1024
     height: 720
+    visible: true
+
+    SystemPalette{ id: activePalette }
 
     Rectangle {
         id: menu
@@ -13,88 +16,28 @@ Rectangle {
         height: 52
         color: "#c2bfbf"
 
-        Rectangle {
-            id: newFileButton
-            x: 98
+        Button {
+            x: 172
             y: 13
-            width: 99
-            height: 27
-            color: "#b7b4b4"
 
-            Text {
-                id: newFileText
-                x: 21
-                y: 7
-                width: 56
-                height: 14
-                text: qsTr("New File")
-                font.pixelSize: 12
-            }
-
-            MouseArea {
-                id: mouse_areaNewFileButton
-                x: 0
-                y: 0
-                width: 99
-                height: 27
-
-                onClicked: { hApplication.createFile("C:\\test.txt") }
-            }
+            text: "New File"
+            onClicked: { hApplication.createFile("./text.txt") }
         }
 
-        Rectangle {
-            id: saveFileButton
-            x: 411
+        Button {
+            x: 427
             y: 13
-            width: 99
-            height: 27
-            color: "#b7b4b4"
 
-            Text {
-                id: saveFileText
-                x: 21
-                y: 7
-                width: 56
-                height: 14
-                text: qsTr("Save File")
-                font.pixelSize: 12
-            }
+            text: "Save File"
 
-            MouseArea {
-                id: mouse_areaSaveFileButton
-                x: 0
-                y: 0
-                width: 99
-                height: 27
-            }
         }
 
-        Rectangle {
-            id: exitButton
-            x: 825
-            y: 13
-            width: 99
-            height: 27
-            color: "#b7b4b4"
+       Button {
+           x: 731
+           y: 13
 
-            Text {
-                id: exitText
-                x: 35
-                y: 7
-                width: 26
-                height: 14
-                text: qsTr("Exit")
-                font.pixelSize: 12
-            }
-
-            MouseArea {
-                id: mouse_areaExitButton
-                x: 0
-                y: 0
-                width: 99
-                height: 27
-                onClicked: { Qt.quit() }
-            }
+           text: "Exit"
+            onClicked: { Qt.quit() }
         }
     }
 
@@ -127,6 +70,8 @@ Rectangle {
                     y: 0
                     width: 59
                     height: 51
+
+                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/initialState.png" } ) }
                 }
             }
 
@@ -144,6 +89,8 @@ Rectangle {
                     y: 0
                     width: 66
                     height: 57
+
+                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/finalState.png" } ) }
                 }
             }
 
@@ -161,6 +108,8 @@ Rectangle {
                     y: 0
                     width: 66
                     height: 57
+
+                    onDoubleClicked: { stateModel.append( { "sourceImage":"Resources/state.png" } ) }
                 }
             }
         }
@@ -182,5 +131,63 @@ Rectangle {
         width: 780
         height: 668
         color: "#959393"
+
+        GridView {
+            id: centerGridView
+
+            property int firstIndexDrag: -1
+
+            x: 0
+            y: 0
+            width: 780
+            height: 668
+            cellHeight: 70
+            cellWidth: 70
+
+            anchors.fill: parent
+
+            delegate:
+                Item {
+                    x: 5
+                    height: 50
+                    Column {
+                        spacing: 5
+                        Rectangle {
+                            width: 66
+                            height: 57
+                            anchors.horizontalCenter: parent.horizontalCenter
+
+
+                            Image {
+
+                                source: sourceImage
+                                anchors.fill: parent
+                            }
+                        }
+
+                    }
+                }
+
+            MouseArea {
+                anchors.fill: parent
+
+                onReleased: {
+                        if( centerGridView.firstIndexDrag !== -1 )
+                            stateModel.move( centerGridView.firstIndexDrag , centerGridView.indexAt( mouseX , mouseY )
+                                            , 1 )
+
+                        centerGridView.firstIndexDrag = -1
+                }
+
+                onPressed: centerGridView.firstIndexDrag=centerGridView.indexAt( mouseX , mouseY )
+            }
+
+            model: ListModel {
+
+                id: stateModel
+
+                onItemsInserted: { }
+            }
+        }
     }
 }

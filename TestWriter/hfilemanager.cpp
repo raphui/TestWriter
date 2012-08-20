@@ -10,16 +10,8 @@ int HFileManager::createFile( QString filename )
 
     currentFile.setFileName( filename );
 
-    if( this->openFile( filename ) )
-    {
-        QTextStream stream;
-
-        stream.setDevice( &currentFile );
-
-        stream << "poulet";
-
-        this->closeFile( filename );
-    }
+    if( !this->openFile( filename ) )
+        return PC_ERROR;
 
 
 
@@ -30,7 +22,16 @@ int HFileManager::openFile( QString filename )
 {
     TRACE_2( HFILEMANAGER , "HFileManager openFile( %s )." , qPrintable( filename ) );
 
-    return currentFile.open( QIODevice::WriteOnly | QIODevice::Text );
+    if( currentFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
+    {
+        streamFile.setDevice( &currentFile );
+
+        return PC_SUCCESS;
+    }
+    else
+    {
+        return PC_ERROR;
+    }
 
 }
 
@@ -41,9 +42,9 @@ int HFileManager::saveFile( QString filename )
     return PC_SUCCESS;
 }
 
-int HFileManager::closeFile( QString filename )
+int HFileManager::closeFile()
 {
-    TRACE_2( HFILEMANAGER , "HFileManager closeFile( %s )." , qPrintable( filename ) );
+    TRACE_2( HFILEMANAGER , "HFileManager closeFile()." );
 
     currentFile.close();
 

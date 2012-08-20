@@ -20,3 +20,24 @@ int HApplication::createFile(QString filename)
 
     return fileManager->createFile( filename );
 }
+
+int HApplication::exitApplication()
+{
+    TRACE_2( HAPPLICATION , "HApplication exitApplication().");
+
+    fileManager->closeFile();
+
+    return PC_SUCCESS;
+}
+
+void HApplication::construcItem(QString name)
+{
+    TRACE_2( HAPPLICATION , "HApplication construcItem( %s )." , qPrintable( name ) );
+
+    if( name == "initialState" )
+        qDebug() << "IS created.";
+    else if( name == "state" )
+        qDebug() << "S created.";
+    else if( name == "finalState" )
+        qDebug() << "FS created.";
+}

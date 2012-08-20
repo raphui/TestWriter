@@ -10,6 +10,8 @@ class HInvokation
 {
     public:
         HInvokation();
+
+
 };
 
 #endif // HINVOKATION_H

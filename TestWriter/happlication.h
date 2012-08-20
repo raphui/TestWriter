@@ -15,6 +15,8 @@ class HApplication : public QObject
         HApplication();
         int init();
         Q_INVOKABLE int createFile( QString filename );
+        Q_INVOKABLE int exitApplication();
+        Q_INVOKABLE void construcItem( QString name );
 
     private:
         HFileManager *fileManager;
