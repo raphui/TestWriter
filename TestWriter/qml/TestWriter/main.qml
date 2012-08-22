@@ -129,6 +129,32 @@ Rectangle {
         }
      }
 
+    Image {
+        id: transition
+        x: 23
+        y: 274
+        width: 66
+        height: 57
+        source: "Resources/transition.png"
+
+        MouseArea {
+            id: mouse_areaTransition
+
+            anchors.fill: parent
+
+            onReleased: {
+
+                var imgComp = Qt.createComponent("Transition.qml");
+
+                if( imgComp.status == Component.Ready )
+                    var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
+                else
+                    console.log( Component.errorString );
+            }
+
+        }
+    }
+
     }
 
     Rectangle {
