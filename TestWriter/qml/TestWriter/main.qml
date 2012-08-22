@@ -76,6 +76,7 @@ Rectangle {
             }
         }
 
+
         Image {
             id: finalState
             x: 23
@@ -128,6 +129,8 @@ Rectangle {
         }
     }
 
+    }
+
     Rectangle {
         id: rightPanelObjects
         x: 902
@@ -147,3 +150,4 @@ Rectangle {
 
     }
 }
+
