@@ -6,11 +6,12 @@ Rectangle {
     height: 28
     radius: 0
 
-    TextInput {
-        id: textInput
+    TextEdit {
+        id: textEdit
         x: 1
         y: 0
         text: qsTr("")
+        focus: true
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 1

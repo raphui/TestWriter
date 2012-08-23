@@ -36,6 +36,13 @@ Rectangle {
 
         anchors.fill: parent
 
+        Button {
+            id: saveButton
+            x: 11
+            y: 158
+            text: "Save"
+        }
+
 
 
     }

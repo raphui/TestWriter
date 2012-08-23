@@ -1,5 +1,6 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "dropJS.js" as Drop
 
 Rectangle {
     id: mainContainer
@@ -65,20 +66,9 @@ Rectangle {
 
                 anchors.fill: parent
 
-                onReleased: {
+                onDoubleClicked: {
 
-                    var imgComp = Qt.createComponent("InitialState.qml");
-
-                    if( imgComp.status == Component.Ready )
-                    {
-                        var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
-
-                        hApplication.construcItem( parent.name );
-                    }
-                    else
-                    {
-                        console.log( Component.errorString );
-                    }
+                    Drop.drop("InitialState.qml" , dropPanel );
                 }
 
             }
@@ -100,20 +90,9 @@ Rectangle {
 
                 anchors.fill: parent
 
-                onReleased: {
+                onDoubleClicked: {
 
-                    var imgComp = Qt.createComponent("FinalState.qml");
-
-                    if( imgComp.status == Component.Ready )
-                    {
-                        var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
-
-                        hApplication.construcItem( parent.name );
-                    }
-                    else
-                    {
-                        console.log( Component.errorString );
-                    }
+                    Drop.drop("FinalState.qml" , dropPanel );
                 }
 
             }
@@ -134,20 +113,9 @@ Rectangle {
 
                 anchors.fill: parent
 
-                onReleased: {
+                onDoubleClicked: {
 
-                    var imgComp = Qt.createComponent("State.qml");
-
-                    if( imgComp.status == Component.Ready )
-                    {
-                        var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
-
-                        hApplication.construcItem( parent.name );
-                    }
-                    else
-                    {
-                        console.log( Component.errorString );
-                    }
+                    Drop.drop("State.qml" , dropPanel );
 
             }
         }
@@ -168,20 +136,9 @@ Rectangle {
 
             anchors.fill: parent
 
-            onReleased: {
+            onDoubleClicked: {
 
-                var imgComp = Qt.createComponent("Transition.qml");
-
-                if( imgComp.status == Component.Ready )
-                {
-                    var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
-
-                    hApplication.construcItem( parent.name );
-                }
-                else
-                {
-                    console.log( Component.errorString );
-                }
+                Drop.drop("Transition.qml" , dropPanel );
             }
 
         }
@@ -192,9 +149,9 @@ Rectangle {
     Rectangle {
         id: rightPanelObjects
         x: 902
-        y: 52
+        y: 192
         width: 122
-        height: 668
+        height: 528
         color: "#4d4c4c"
     }
 
@@ -206,6 +163,23 @@ Rectangle {
         height: 668
         color: "#959393"
 
+        TextEditCustom {
+            id: dropPanelEdit
+            x: 69
+            y: 34
+            width: 642
+            height: 590
+        }
+
+    }
+
+    Rectangle {
+        id: dropPanel
+        x: 902
+        y: 52
+        width: 122
+        height: 140
+        color: "#626060"
     }
 }
 

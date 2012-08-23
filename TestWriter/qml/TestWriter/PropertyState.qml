@@ -1,5 +1,6 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
+import "TextEditFunctionJS.js" as TEFuncJS
 
 Rectangle {
     id: container
@@ -39,7 +40,7 @@ Rectangle {
         Text {
             id: logOnEntry
             x: 0
-            y: 45
+            y: 29
             width: 85
             height: 16
             text: qsTr("Log on entry:")
@@ -49,11 +50,33 @@ Rectangle {
         Text {
             id: nameText
             x: 0
-            y: 0
+            y: 5
             width: 40
             height: 17
             text: qsTr("Name:")
             font.pixelSize: 14
+        }
+
+        Button {
+            id: saveButton
+            x: 11
+            y: 158
+            text: "Save"
+
+            onClicked: {
+
+                TEFuncJS.appendState( nameTextInput.children[0].text
+                                            , logTextInput.children[0].text
+                                            , invokationTextInput.children[0].text );
+            }
+        }
+
+        TextInputCustom {
+            id: logTextInput
+            x: 36
+            y: 45
+            width: 74
+            height: 18
         }
 
 
@@ -63,7 +86,7 @@ Rectangle {
     TextInputCustom {
         id: nameTextInput
         x: 46
-        y: 0
+        y: 5
         width: 74
         height: 18
     }
