@@ -2,6 +2,7 @@ function appendState( name , log , invokation ) {
 
     testString();
 
+    string += "\t</state>\n";
     string += "\t<state id=\"" + name + "\">\n";
 
     if( log != "" )
@@ -29,7 +30,6 @@ function appendTransition( target , event ) {
     testString();
 
     string += "\t\t<transition target=\"" + target + "\" event=\"" + event + "\" />\n";
-    string += "\t</state>\n"
 
     appendString();
  }
@@ -37,6 +37,8 @@ function appendTransition( target , event ) {
 function appendFinalState( name ) {
 
     testString();
+
+    string += "\t</state>\n";
 
     string += "\t<final id=\"" + name + "\" />\n";
 

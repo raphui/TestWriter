@@ -5,6 +5,7 @@ Rectangle {
     id: container
     width: 99
     height: 27
+    focus: true
 
     property string text: "Button"
 
