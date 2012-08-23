@@ -2,6 +2,7 @@
 import QtQuick 1.1
 
 Rectangle {
+    id: mainContainer
     width: 1024
     height: 720
     visible: true
@@ -21,7 +22,7 @@ Rectangle {
             y: 13
 
             text: "New File"
-            onClicked: { hApplication.createFile("./text.txt") }
+            onClicked: { hApplication.createFile("./text.scxml") }
         }
 
         Button {
@@ -53,9 +54,11 @@ Rectangle {
             id: initalState
             x: 26
             y: 21
-            width: 59
-            height: 51
+            width: 64
+            height: 64
             source: "Resources/initialState.png"
+
+            property string name: "initialState"
 
             MouseArea {
                 id: mouse_areaInitalState
@@ -64,13 +67,18 @@ Rectangle {
 
                 onReleased: {
 
-
                     var imgComp = Qt.createComponent("InitialState.qml");
 
                     if( imgComp.status == Component.Ready )
+                    {
                         var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
+
+                        hApplication.construcItem( parent.name );
+                    }
                     else
+                    {
                         console.log( Component.errorString );
+                    }
                 }
 
             }
@@ -81,9 +89,11 @@ Rectangle {
             id: finalState
             x: 23
             y: 96
-            width: 66
-            height: 57
+            width: 64
+            height: 64
             source: "Resources/finalState.png"
+
+            property string name: "finalState"
 
             MouseArea {
                 id: mouse_areaFinalState
@@ -95,9 +105,15 @@ Rectangle {
                     var imgComp = Qt.createComponent("FinalState.qml");
 
                     if( imgComp.status == Component.Ready )
+                    {
                         var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
+
+                        hApplication.construcItem( parent.name );
+                    }
                     else
+                    {
                         console.log( Component.errorString );
+                    }
                 }
 
             }
@@ -107,9 +123,11 @@ Rectangle {
             id: state
             x: 23
             y: 181
-            width: 66
-            height: 57
+            width: 64
+            height: 64
             source: "Resources/state.png"
+
+            property string name: "state"
 
             MouseArea {
                 id: mouse_areaState
@@ -121,9 +139,15 @@ Rectangle {
                     var imgComp = Qt.createComponent("State.qml");
 
                     if( imgComp.status == Component.Ready )
+                    {
                         var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
+
+                        hApplication.construcItem( parent.name );
+                    }
                     else
+                    {
                         console.log( Component.errorString );
+                    }
 
             }
         }
@@ -133,9 +157,11 @@ Rectangle {
         id: transition
         x: 23
         y: 274
-        width: 66
-        height: 57
+        width: 64
+        height: 64
         source: "Resources/transition.png"
+
+        property string name: "transition"
 
         MouseArea {
             id: mouse_areaTransition
@@ -147,9 +173,15 @@ Rectangle {
                 var imgComp = Qt.createComponent("Transition.qml");
 
                 if( imgComp.status == Component.Ready )
+                {
                     var img = imgComp.createObject( centerPanel , {"x" : mouseX , "y" : mouseY } );
+
+                    hApplication.construcItem( parent.name );
+                }
                 else
+                {
                     console.log( Component.errorString );
+                }
             }
 
         }

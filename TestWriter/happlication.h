@@ -4,6 +4,7 @@
 #include "hdebug.h"
 #include "htypes.h"
 #include "hfilemanager.h"
+#include "hitemfactory.h"
 
 #include <QObject>
 
@@ -19,7 +20,8 @@ class HApplication : public QObject
         Q_INVOKABLE void construcItem( QString name );
 
     private:
-        HFileManager *fileManager;
+        HFileManager *hFileManager;
+        HItemFactory *hItemFactory;
 
 };
 

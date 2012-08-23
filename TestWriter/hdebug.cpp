@@ -16,7 +16,8 @@ trace_module trace_modules[] =
     {"HINVOKATION"      , TRACE_LEVEL_ALL },
     {"HTRANSITION"      , TRACE_LEVEL_ALL },
     {"HAPPLICATION"     , TRACE_LEVEL_ALL },
-    {"HFILEMANAGER"     , TRACE_LEVEL_ALL }
+    {"HFILEMANAGER"     , TRACE_LEVEL_ALL },
+    {"HITEMFACTORY"     , TRACE_LEVEL_ALL }
 
 };
 

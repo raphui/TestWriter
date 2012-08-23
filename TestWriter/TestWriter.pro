@@ -36,7 +36,8 @@ SOURCES += main.cpp \
     htransition.cpp \
     hinvokation.cpp \
     hdebug.cpp \
-    hfilemanager.cpp
+    hfilemanager.cpp \
+    hitemfactory.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
@@ -49,4 +50,5 @@ HEADERS += \
     hinvokation.h \
     hdebug.h \
     hfilemanager.h \
-    htypes.h
+    htypes.h \
+    hitemfactory.h

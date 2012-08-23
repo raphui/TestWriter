@@ -3,15 +3,26 @@ import QtQuick 1.1
 
 Image {
     id: transition
-    width: 59
-    height: 51
+    width: 64
+    height: 64
     source: "Resources/transition.png"
+    rotation: 0
 
-    states: State {
+    property int rot: 0
+
+    states: [ State {
          name: "rotated"
-         PropertyChanges { target: transition; rotation: 90; transformOrigin: Item.BottomRight }
 
-    }
+         PropertyChanges { target: transition; rot: ( rot + 90 ) }
+         PropertyChanges { target: transition; rotation: transition.rot; transformOrigin: Item.BottomRight }
+
+
+    }, State {
+            name: "no-rotated"
+
+            PropertyChanges { target: transition; rot: ( rot + 90 ) }
+            PropertyChanges { target: transition; rotation: transition.rot; transformOrigin: Item.BottomRight }
+     } ]
 
      transitions: Transition {
 
@@ -29,7 +40,48 @@ Image {
 
         anchors.fill: parent
 
-        onClicked: parent.state = "rotated"
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+        onClicked: {
+
+            if( mouse.button == Qt.RightButton )
+            {
+
+                if( rightPanelObjects.children.length > 0 )
+                {
+                    console.log("Deleting object children on the rightPanelObjets");
+                    rightPanelObjects.children[0].destroy();
+
+                }
+
+
+                var imgComp = Qt.createComponent("PropertyTransition.qml");
+
+                if( imgComp.status == Component.Ready )
+                    var img = imgComp.createObject( rightPanelObjects , {"anchors.fill" : rightPanelObjects } );
+                else
+                    console.log( Component.errorString );
+            }
+            else
+            {
+                if( parent.state == "" )
+                {
+                    parent.state = "rotated"
+                }
+                else if( parent.state == "rotated" )
+                {
+                    parent.state = "no-rotated"
+
+                }
+                else if( parent.state == "no-rotated" )
+                {
+                    parent.state = "rotated"
+                }
+            }
+
+
+        }
+
     }
 
 }

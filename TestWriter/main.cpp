@@ -18,13 +18,15 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
     QDeclarativeView view;
     view.rootContext()->setContextProperty("hApplication" , hApp);
+    view.setResizeMode( QDeclarativeView::SizeRootObjectToView );
     view.setSource( QUrl("qml/TestWriter/main.qml") );
     view.show();
 
 
-    //viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-    //viewer.setMainQmlFile(QLatin1String("qml/TestWriter/main.qml"));
-    //viewer.showExpanded();
+//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+//    viewer.setMainQmlFile(QLatin1String("qml/TestWriter/main.qml"));
+//    viewer.setResizeMode( QDeclarativeView::SizeRootObjectToView );
+//    viewer.showExpanded();
 
 
     return app->exec();

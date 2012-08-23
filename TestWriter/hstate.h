@@ -12,11 +12,20 @@ class HState
         HState();
 
         void setId( QString id );
+        void setInitial( bool val );
+        void setFinal( bool val );
+        void setInvokationString( QString inv );
 
         QString getId();
+        QString getInvokationString();
+        bool isInitial();
+        bool isFinal();
 
     private:
         QString id;
+        bool initial;
+        bool final;
+        QString invokationString;
 
 };
 

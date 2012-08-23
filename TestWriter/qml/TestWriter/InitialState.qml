@@ -3,8 +3,8 @@ import QtQuick 1.1
 
 Image {
     id: initalState
-    width: 59
-    height: 51
+    width: 64
+    height: 64
     source: "Resources/initialState.png"
 
     MouseArea {
@@ -15,6 +15,29 @@ Image {
 
         anchors.fill: parent
 
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+        onClicked: {
+
+            if( mouse.button == Qt.RightButton )
+            {
+                if( rightPanelObjects.children.length > 0 )
+                {
+                    console.log("Deleting object children on the rightPanelObjets");
+                    rightPanelObjects.children[0].destroy();
+
+                }
+
+
+                var imgComp = Qt.createComponent("PropertyInitialState.qml");
+
+                if( imgComp.status == Component.Ready )
+                    var img = imgComp.createObject( rightPanelObjects , {"anchors.fill" : rightPanelObjects } );
+                else
+                    console.log( Component.errorString );
+            }
         }
 
     }
+
+}

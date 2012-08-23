@@ -35,6 +35,7 @@ int HFileManager::openFile( QString filename )
 
 }
 
+
 int HFileManager::saveFile( QString filename )
 {
     TRACE_2( HFILEMANAGER , "HFileManager saveFile( %s )." , qPrintable( filename ) );
@@ -50,3 +51,4 @@ int HFileManager::closeFile()
 
     return PC_SUCCESS;
 }
+
