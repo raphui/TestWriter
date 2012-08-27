@@ -52,6 +52,7 @@ Rectangle {
 
                 TEFuncJS.appendTransition( targetTextInput.children[0].text , eventTextInput.children[0].text );
             }
+
         }
 
 
